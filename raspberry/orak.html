@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+        src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autoload=true&amp;skin=sunburst&amp;lang=py"
+        defer></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/my.css">
+    <link rel="stylesheet" href="./css/w3-theme-grey.css">
+
+
+    <title>RPi-Fényjákékok/Foglalkozások</title>
+    <link rel='icon' href='favicon.png' type='image/x-icon' />
+</head>
+
+<body>
+
+    <!-- Head -->
+    <div class="container p-0">
+        <div class="jumbotron jumbotron-fluid p-3 m-0">
+            <div class="row">
+                <div class="col-8">
+                    <h1 id="head1" class="display-4">Raspberry Pi fényjátékok</h1>
+                    <p id="head2" class="lead">Út a villany felkapcsolásától a jelzőlámpa algoritmus kódolásáig.
+                        <br>
+                        "Kódból vagyunk ..."
+                    </p>
+                </div>
+                <div class="col-4">
+                    <img src="./images/logoFenyjatek.jpg" id="head3" class="img-fluid my-img" alt="Logókép">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Head -->
+
+    <div class="container p-0 sticky-top">
+        <!-- Menu -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="orak.html">Foglalkozások</span></a>
+                    <a class="nav-item nav-link" href="algoritmus.html">Algoritmus</a>
+                    <a class="nav-item nav-link" href="help.html">Help</a>
+                </div>
+            </div>
+            <div>
+                <a href="#o1" class="btn btn-outline-success px-2" role="button" aria-pressed="true">1.</a>
+                <a href="#o2" class="btn btn-outline-success px-2" role="button" aria-pressed="true">2.</a>
+                <a href="#o3" class="btn btn-outline-success px-2" role="button" aria-pressed="true">3.</a>
+                <a href="#o4" class="btn btn-outline-success px-2" role="button" aria-pressed="true">4.</a>
+                <a href="#o56" class="btn btn-outline-success px-2" role="button" aria-pressed="true">5-6.</a>
+            </div>
+        </nav>
+    </div>
+    <!--/Menu -->
+    <div class="container p-0">
+
+        <!-- Content -->
+        <h1>Foglalkozások</h1>
+
+        <!-- 1. óra -->
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-3 w3-theme-l5 p-2 pb-4">
+                <h3>Előkészítés</h3>
+                <ol>
+                    <li>1.óra mappa elkészítése</li>
+                    <li> <a charset="UTF-8" href="./sources/00_LedAlap.zip">00_LedAlap.py</a> letöltése</li>
+                </ol>
+                <h3>Fogalmak</h3>
+                <a href="#gpioPrg" class="btn btn-outline-success mr-1 mb-1" role="button" aria-pressed="true">GPIO
+                    output</a>
+                <a href="#parameterProgram" class="btn btn-outline-success mr-1 mb-1" role="button" aria-pressed="true"
+                    style="z-index: 1000">Program paraméterei</a>
+            </div>
+
+            <div class="col-12 col-lg-9 p-lg-3 p-2 pt-3 my-border">
+                <h2 id="o1" class="anchor">1. Felgyújtjuk a villanyt (1. óra)</h2>
+                <h3 id="gpioPrg" class="anchor">A GPIO port használata kimenetként</h3>
+                <p><span class="my-code my-code-op">00_LedAlap.py</span> fájl:</p>
+                <pre class="prettyprint lang-pyton linenums">
+#Led kigyújtása
+
+#A GPIO modul behívása
+import RPi.GPIO as GPIO
+import time
+
+#Figyelmezetetések kikapcsolása
+GPIO.setwarnings(False)
+
+#tüskék fizikai kiosztás szerint
+GPIO.setmode(GPIO.BOARD)
+
+#tüskék alaphelyzet
+GPIO.cleanup()
+
+#16-os tüske kimenet
+GPIO.setup(36, GPIO.OUT)
+
+#Led bekapcsolása
+#GPIO.output(36, GPIO.HIGH)
+GPIO.output(36, 1)
+#GPIO.output(36, True)
+
+print("Pin_36 világít. Kilép Ctrl-C")
+try:
+    while True:
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    print("Pinek lekapcsolva")
+    GPIO.cleanup()</pre>
+
+                <h3 id="parameterProgram" class="anchor">A program paraméterei</h3>
+                <p> <span class="my-code my-code-op">01_LedKigyujt.py</span> fájl részlete:</p>
+                <pre class="prettyprint lang-pyton linenums:17">
+#A program paraméterei:
+#Pin definiálása
+pin = 36
+onOff = 1
+
+#A "pin" tüske kimenet
+GPIO.setup(pin, GPIO.OUT)
+
+#Led kigyújt
+GPIO.output(pin, onOff)</pre>
+            </div>
+        </div>
+        <!--/1. óra -->
+
+        <!-- 2. óra -->
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-3 w3-theme-l5 p-2 pb-4">
+                <h3>Előkészítés</h3>
+                <ol>
+                    <li>"2.óra" mappa elkészítése</li>
+                    <li>
+                        Letöltés:
+                        <a href="./sources/01_LedKigyujt.zip">01_LedKigyujt.py</a> |
+                        <a href="./sources/03_LedVillogMind.zip">03_LedVillogMind.py</a>
+                    </li>
+                    <li>
+                        Átnevezés:
+                        01_LedKigyujt.py -> 02_LedVillog.py
+                    </li>
+                </ol>
+
+                <h3>Fogalmak</h3>
+                <a href="#vegtelenCiklus" class="btn btn-outline-success mr-1 mb-1" role="button"
+                    aria-pressed="true">Végtelen ciklus</a>
+                <a href="#frekvencia" class="btn btn-outline-success mr-1 mb-1" role="button"
+                    aria-pressed="true">Frekvencia, periódusidő</a>
+                <a href="#tombCiklus" class="btn btn-outline-success mr-1 mb-1" role="button" aria-pressed="true">Tömb,
+                    tömb bejárás, ciklus</a>
+                <a href="#fuggveny" class="btn btn-outline-success mr-1 mb-1" role="button"
+                    aria-pressed="true">Függvény, globális változó</a>
+
+
+            </div>
+
+
+            <div class="col-12 col-lg-9 p-lg-3 p-2 pt-3 my-border">
+
+                <h2 id="o2" class="anchor">2. Villogtatunk (2. óra)</h2>
+
+                <h3 id="vegtelenCiklus" class="anchor">2.1. Villogtatás végtelen ciklussal</h3>
+                <p>
+                    Logikai változó "billegtetése": <span class="my-code">onOff = <span class="my-code-op">not</span>
+                        onOff</span>
+                    <br>
+                    Várakozás "Tv" ideig: <span class="my-code">time.sleep(Tv)</span>
+                </p>
+                <p><span class="my-code my-code-op">02_LedVillog.py</span> fájl részlete:</p>
+                <pre class="prettyprint lang-py linenums:18">
+#Paraméterek
+pin = 36 #Pin definiálása
+T = 0.1 #Villogás periódusideje
+Tv = T/2
+onOff = 1
+
+#36-es tüske kimenet
+GPIO.setup(pin, GPIO.OUT)
+
+print("Pin_%s villog. Kilép Ctrl-C" %(pin))
+try:
+    #Végtelen ciklus
+    while True: 
+        GPIO.output(pin, onOff)
+        onOff = not onOff
+        time.sleep(Tv)
+
+except KeyboardInterrupt:
+    print("Pinek lekapcsolva")
+    GPIO.cleanup()</pre>
+
+                <h4 id="frekvencia" class="m-0 p-0 anchor">Négyszögjel</h4>
+                <p>
+                    Periódus idő: Egy periódus lefutásának ideje: T= 100ms = 0,1s
+                    <br>
+                    Ferekvencia: Egy másodperc alatt mennyi periódus zajlik le:
+                    <br>
+                    f= 1/T = 1/0,1 = 10Hz (1 másodperc alatt 10 periódus)
+                </p>
+                <p>Négyszögjel az oszcilloszkópon</p>
+                <img src="./images/Oszcilloszlop-10Hz.jpg" class="img-fluid my-img" alt="Oszcilloszkóp 10Hz">
+
+                <h3>2.2. Tömbök használata</h3>
+                <h4>Villogtatás változókkal</h4>
+                <p>Egyszerre villogtatjuk az öszes ledet, minden pin külön változóban van. </p>
+                <p><span class="my-code my-code-op">03_LedVillogMind.py</span> fájl részlete:</p>
+                <pre class="prettyprint lang-py linenums:18">
+#Paraméterek
+pin36 = 36 #Pinek definiálása
+pin38 = 38
+pin40 = 40
+pin33 = 33
+pin35 = 35
+pin37 = 37
+T = 0.1 #Villogás periódusideje
+Tv = T/2 
+onOff = 1 #Led bekapcsolása
+
+#A Pinek kimenetek
+GPIO.setup(pin36, GPIO.OUT)
+GPIO.setup(pin38, GPIO.OUT)
+GPIO.setup(pin40, GPIO.OUT)
+GPIO.setup(pin33, GPIO.OUT)
+GPIO.setup(pin35, GPIO.OUT)
+GPIO.setup(pin37, GPIO.OUT)
+
+print("Pinek villognak. Kilép Ctrl-C")
+try:
+while True:
+    GPIO.output(pin36, onOff)
+    GPIO.output(pin38, onOff)
+    GPIO.output(pin40, onOff)
+    GPIO.output(pin33, onOff)
+    GPIO.output(pin35, onOff)
+    GPIO.output(pin37, onOff)
+    onOff = not onOff
+    time.sleep(Tv)
+    
+    except KeyboardInterrupt:
+    print("Pinek lekapcsolva")
+    GPIO.cleanup()</pre>
+
+                <h4 id="tombCiklus" class="anchor">Villogtatás tömbbel</h4>
+                <p>Egyszerre villogtatjuk az öszes ledet, tömbbel, ciklussal. Így jóval rugalmasabb a kód. </p>
+                <p>A "pins" nevű tömb létrehozása:</p>
+                <pre class="prettyprint lang-py">
+pins = [37, 35, 33, 40, 38, 36]</pre>
+
+                <p>Tömb gyűjtemény szerű bejárása indexek nélkül:</p>
+                <pre class="prettyprint lang-py">
+for pin in pins:
+    GPIO.setup(pin, GPIO.OUT)</pre>
+
+                <p><span class="my-code my-code-op">04_LedVillogMindTomb.py</span> fájl részlete:</p>
+                <pre class="prettyprint lang-py linenums:18">
+#Paraméterek
+#Pinek definiálása
+pins = [37, 35, 33, 40, 38, 36]
+T = 0.5 #Villogás periódusideje
+Tv = T/2
+
+#A Pinek kimenetek
+for pin in pins:
+    GPIO.setup(pin, GPIO.OUT)
+
+#Led bekapcsolása
+onOff = 1
+
+print("Pinek villognak. Kilép Ctrl-C")
+try:
+    while True:
+        for pin in pins:
+            GPIO.output(pin, onOff)
+        onOff = not onOff
+        time.sleep(Tv)
+
+except KeyboardInterrupt:
+    print("Pinek lekapcsolva")
+    GPIO.cleanup()</pre>
+
+                <h4 id="fuggveny" class="anchor">Villogtatás függvénnyel</h4>
+                <p>Függvének készítése (def), globális változó fogalma: </p>
+                <pre class="prettyprint lang-py">
+
+onOff = 1 #Led bekapcsolása                    
+
+def DefPinsOut():
+    for pin in pins:
+        GPIO.setup(pin, GPIO.OUT)
+
+def LampBlink():
+    global onOff #Az onOff globális változó
+    for pin in pins:
+        GPIO.output(pin, onOff)
+    onOff = not onOff #Nem jön létre új változó</pre>
+
+                <p>Függvény hívás:</p>
+                <pre class="prettyprint lang-py">
+DefPinsOut()  #Függvény hívás    
+
+print("Pinek villognak. Kilép Ctrl-C")
+try:
+    while True:
+        LampBlink()  #Függvény hívás 
+        time.sleep(Tv)
+
+except KeyboardInterrupt:
+    print("Pinek lekapcsolva")
+    GPIO.cleanup()</pre>
+
+                <p><span class="my-code my-code-op">04_LedVillogMindFuggveny.py</span> fájl részlete:</p>
+                <pre class="prettyprint lang-py linenums:18">
+#Függvények
+#A pinek legyenek kimenetek
+def DefPinsOut():
+    for pin in pins:
+        GPIO.setup(pin, GPIO.OUT)
+
+def LampBlink():
+    global onOff
+    for pin in pins:
+        GPIO.output(pin, onOff)
+    onOff = not onOff
+
+#A Pinek kimenetek
+DefPinsOut()  #Függvény hívás    
+
+print("Pinek villognak. Kilép Ctrl-C")
+try:
+    while True:
+        LampBlink()  #Függvény hívás 
+        time.sleep(Tv)
+
+except KeyboardInterrupt:
+    print("Pinek lekapcsolva")
+    GPIO.cleanup()</pre>
+
+            </div>
+        </div>
+        <!--/2. óra -->
+
+        <!-- 3. óra -->
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-3 w3-theme-l5 p-2 pb-4">
+                <h3>Előkészítés</h3>
+                <ol>
+                    <li>3.óra mappa elkészítése</li>
+                    <li>
+                        Letöltés <a href="./sources/06_PWMvillogo.zip">06_PWMvillogo.py</a>
+                        Letöltés <a href="./sources/01_LedKigyujt.zip">06_PWMvillogo.py</a>
+                    </li>
+                    <li>
+                        Átnevezés:
+                        01_LedKigyujt.py -> 07_FenyjatekMintaval.py
+                    </li>
+                </ol>
+                <h3>Fogalmak</h3>
+                <!-- PWM -->
+
+                <a href="#gpioPwm" class="btn btn-outline-success mr-1 mb-1" role="button" aria-pressed="true">GPIO
+                    PWM
+                    vezérlése</a>
+                <a href="#pwmModosit" class="btn btn-outline-success mr-1 mb-1" role="button" aria-pressed="true">PWM
+                    módosítások</a>
+                <a href="#print" class="btn btn-outline-success mr-1 mb-1" role="button" aria-pressed="true">Paraméteres
+                    print</a>
+                <a href="#vlidalas" class="btn btn-outline-success mr-1 mb-1" role="button"
+                    aria-pressed="true">Adatbekérés, validálás</a>
+                <a href="#continue" class="btn btn-outline-success mr-1 mb-1" role="button"
+                    aria-pressed="true">continue</a>
+
+                <!-- bit-minta -->
+                <a href="#bitMintaTomb" class="btn btn-outline-success mr-1 mb-1" role="button"
+                    aria-pressed="true">bit-minta tömb</a>
+                <a href="#forIndexszel" class="btn btn-outline-success mr-1 mb-1" role="button" aria-pressed="true">for
+                    indexszel</a>
+                <a href="#tombokTombje" class="btn btn-outline-success mr-1 mb-1" role="button"
+                    aria-pressed="true">Tömbök tömbje</a>
+
+            </div>
+
+            <div class="col-12 col-lg-9 p-lg-3 p-2 pt-3 my-border">
+                <h2 id="o3" class="anchor">3. Fényerő szabályzás és villogtatás bit mintával (3. óra)</h2>
+
+                <h3 id="gpioPwm" class="anchor">3.1 A GPIO port mint PWM kimenet</h3>
+                <h4>A PWM programozása</h4>
+                <p>PWM: (Pulse-Width Modulation) Adott kitöltési tényezőjű és frekvenciájú négyszögjel</p>
+                <img src="./images/PMW_50Hz_30.JPG" class="img-fluid my-img" alt="Oszcilloszkóp 10Hz">
+
+                <p>GPIO port PWM üzemmódba kapcsolása (f=50Hz, kitöltési tényező: 30%) és indítás</p>
+                <pre class="prettyprint lang-pyton linenums">
+#36. tüske legyen kimenet
+pin = 36
+GPIO.setup(pin, GPIO.OUT)
+frequency = 1
+fill = 30
+#A pin PWM üzemmódba kapcsolása
+p = GPIO.PWM(pin, frequency)
+#indítás
+p.start(fill)</pre>
+                <h4 id="pwmModosit" class="anchor">Módosítások</h4>
+                <p>Frekvencia megváltoztatása:</p>
+                <pre class="prettyprint lang-py">
+p.ChangeFrequency(frequency)</pre>
+
+                <p>Kitöltés megváltoztatása:</p>
+                <pre class="prettyprint lang-py">
+p.ChangeDutyCycle(fill)</pre>
+
+                <p>Megállítás:</p>
+                <pre class="prettyprint lang-py">
+p.stop()</pre>
+
+                <p>Újra indítás:</p>
+                <pre class="prettyprint lang-py">
+p = GPIO.PWM(pin, frequency)
+p.start(fill)</pre>
+
+                <h4 id="print">Paraméterezett kiírás</h4>
+                <p>Változók belefűzése a konzolos kiírásba</p>
+                <pre class="prettyprint lang-py linenums">
+frequency = 1
+fill = 50
+print("f={0} Hz {1} % Stop: Ctrl-C" .format(frequency, fill))</pre>
+
+                <h4 id="vlidalas" class="anchor">Adatbekérés és validálás</h4>
+                <p>Változók belefűzése a konzolos kiírásba</p>
+                <pre class="prettyprint lang-py linenums">
+f = raw_input("f={0}Hz {1}% Új frekvencia (1-1000): " .format(frequency, fill))
+k = raw_input("f={0}Hz {1}% Új kitötés (1-100): " .format(frequency, fill))
+
+if k.isdigit():              #Számokból áll-e?
+    fill = int(k)            #Számmá konvertálás
+    if fill in range(1,101): #1 és 100 között van-e
+        p.ChangeDutyCycle(fill)
+        
+if f.isdigit():
+    frequency = int(f)
+    if frequency in range(1,1001):
+        p.ChangeFrequency(frequency)</pre>
+
+                <h4 id="continue">A continue használata</h4>
+                <p>A continue utasítás a while ciklus fejéhez küldi a vezérlést</p>
+                <pre class="prettyprint lang-py linenums">
+while True:
+cont = raw_input("Folytat? y/n: ")
+if cont == "n":
+    p.stop()
+    continue</pre>
+
+
+                <p><span class="my-code my-code-op">06_PWMvillogo.py</span> fájl:</p>
+                <pre class="prettyprint lang-py linenums">
+#06_PWMvillogo.py
+#----------------
+#PWM villogó
+
+import RPi.GPIO as GPIO
+import time
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.cleanup()
+
+#36. tüske legyen kimenet
+pin = 36
+GPIO.setup(pin, GPIO.OUT)
+frequency = 1
+fill = 50
+#A pin PWM üzemmódba kapcsolása
+p = GPIO.PWM(pin, frequency)
+#indítás
+p.start(fill)
+print("f={0}Hz {1}% Srop: Ctrl-C" .format(frequency, fill))
+
+try:
+    while True:
+        cont = raw_input("Folytat? y/n: ")
+        if cont == "n":
+            p.stop()
+            continue
+        
+        if cont == "y":
+            p = GPIO.PWM(pin, frequency)
+            p.start(fill)
+            
+        f = raw_input("f={0} Hz {1}% Új frekvencia (1-1000): " .format(frequency, fill))
+        k = raw_input("f={0} Hz {1}% Új kitöltés (1-100): " .format(frequency, fill))
+        print("------- Kilép: Ctrl-C ----------")
+        if k.isdigit():
+            fill = int(k)
+            if fill in range(1,101):
+                p.ChangeDutyCycle(fill)
+                
+        if f.isdigit():
+            frequency = int(f)
+            if frequency in range(1,1001):
+                p.ChangeFrequency(frequency)     
+        
+except KeyboardInterrupt:
+    print("Pinek lekapcsolva")
+    GPIO.cleanup()</pre>
+
+
+
+                <h3>3.2 Fényjáték bit mintával</h3>
+                <h4 id="bitMintaTomb">Bit minta tömb</h4>
+                <p>A pattern1, pattern2 változókba töltsük be az alábbi bit-minta tömböket</p>
+                <pre class="prettyprint lang-py">
+#Fény bit-minta tömbök
+pattern1 = [0,1,0,1,0,1]
+pattern2 = [1,0,1,0,1,0]</pre>
+
+                <h4 id="forIndexszel" class="anchor">Led kigyújtás bit-mintával</h4>
+                <p>
+                    For ciklus indexszel, range függvény használata.
+                    A range függvény a paramétereiben megadott szám határok közötti egész számokból álló tömböt állít
+                    elő.
+                    Ez adja az indexeket a for ciklusban.
+                    A bit-minta a függvény paraméterében érkezik.
+                </p>
+                <pre class="prettyprint lang-py">
+#Led kigyújtó minta szerint
+def LedFromPattern(pattern):
+    print(pattern)
+    for i in range(0, len(pattern)):
+        GPIO.output(pins[i], pattern[i])</pre>
+
+                <h4 id="forIndexszel" class="anchor">A villogtatás</h4>
+                <p>
+                    Egy for ciklussal n-szer hívjuk a mintával meghívott függvényt.
+                    Ha a range függvénynél nem adunk kezdőértéket, akkor az 0.
+                </p>
+                <pre class="prettyprint lang-py">
+try:
+    for i in range(n):
+        LedFromPattern(pattern1)
+        time.sleep(T)
+        LedFromPattern(pattern2)
+        time.sleep(T)
+        
+    GPIO.cleanup()
+    print("Vége. Pinek kikapcsolva")
+
+except KeyboardInterrupt:
+    GPIO.cleanup()
+    print("Folyamat megszakítva, Pinek kikapcsolva")</pre>
+            </div>
+        </div>
+        <!--/3. óra -->
+
+
+
+        <!-- 4. óra -->
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-3 w3-theme-l5 p-2 pb-4">
+                <h3>Előkészítés</h3>
+                <ol>
+                    <li>"4.óra" mappa elkészítése</li>
+                    <li>
+                        Letöltés:
+                        <a href="./sources/07_FenyjatekMintaval.zip">07_FenyjatekMintaval.py</a>
+                        <a href="./sources/minta1.txt">minta1.txt</a>
+                        <a href="./sources/minta2.txt">minta2.txt</a>
+                    </li>
+                    <li>
+                        Átnevezés:
+                        07_FenyjatekMintaval.py -> 08_FenyjatekTombbel.py
+                    </li>
+                    <li>
+                        Mentés másként (ha 08-as már kész):
+                        08_FenyjatekTombbel.py -> 09_FenyjatekFajlbol.py
+                    </li>
+                </ol>
+
+                <h3>Fogalmak</h3>
+                <a href="#tombokTombje" class="btn btn-outline-success mr-1 mb-1" role="button"
+                    aria-pressed="true">Tömbök tömbje</a>
+                <a href="#forFor" class="btn btn-outline-success mr-1 mb-1" role="button" aria-pressed="true">Egymásba
+                    ágyazott ciklus</a>
+                <a href="#bitmintaTxt" class="btn btn-outline-success mr-1 mb-1" role="button"
+                    aria-pressed="true">Bitmita szövegfájl</a>
+                <a href="#interfesz" class="btn btn-outline-success mr-1 mb-1" role="button"
+                    aria-pressed="true">Interfész</a>
+
+            </div>
+
+
+            <div class="col-12 col-lg-9 p-lg-3 p-2 pt-3 my-border">
+
+                <h2 id="o4" class="anchor">4. Bit-minta szalag olvasó (4. óra)</h2>
+
+                <h3>4.1. Fényjáték bit-minták tömbjével</h3>
+                <h4 id="tombokTombje" class="anchor">A tömbök tömbje</h4>
+                <p>
+                    Létrehozunk a bit-minta tömbökből egy tömböt (fény minta szalag). Így kapunk egy bit-minta tömb
+                    gyűjteményt.
+                    Cél, hogy ezt bejárva a benne lévő bitminta tömbökkel gyújtjuk ki a ledeket.
+                </p>
+                <p><span class="my-code my-code-op">08_FenyjatekTombbel.py</span> fájl részlete:</p>
+                <pre class="prettyprint lang-py">
+#Fény bit-minta szalag
+patternRibbon =[
+                    [1,0,0,0,0,0],
+                    [0,1,0,0,0,0],
+                    [0,0,1,0,0,0],
+                    [0,0,0,1,0,0],
+                    [0,0,0,0,1,0],
+                    [0,0,0,0,0,1],
+                ]</pre>
+
+                <h4 id="forFor" class="anchor">A fény minta szalagot lejátszó függvény</h4>
+                <p>
+                    A függvény a patternRibbon paraméterében megkapja a fény minta szalgot (tömök tömbje)
+                    és az n paraméterben megadott szám-szor lejátssza a fénymintát. <br>
+                    Ez a megoldás ciklusban ciklus: egymásba ágyazott ciklus.
+                </p>
+                <p><span class="my-code my-code-op">08_FenyjatekTombbel.py</span> fájl részlete:</p>
+                <pre class="prettyprint lang-py">
+#Fény bit-minta tömb lejátszó függvény
+def LedFromPatternRibbon(patternRibbon, n):
+    for i in range(n):
+        for pattern in patternRibbon:
+            LedFromPattern(pattern)
+            time.sleep(T)</pre>
+
+                <h3>4.2. Fényjáték szövegfájl bit-mintából</h3>
+
+                <h4 id="bitmintaTxt" class="anchor">Szövegfájl bitminta</h4>
+                <p>
+                    A minta1.txt fájba "0" és "1"-ek segítségével létrehozzuk a lejátszandó bitmintánkat. <br>
+                    Ezzel az ötlettel, az adatokat fizikailag is elkülönítettük a kódtól.
+                </p>
+                <p>A <span class="my-code my-code-op">minta1.txt</span> bitminta szöveg fájl:</p>
+                <pre class="prettyprint lang-py">
+100000
+010000
+001000
+000100
+000010
+000001</pre>
+
+                <h4 id="interfesz" class="anchor">Szöveg beolvasó függvény (interfész)</h4>
+                <p>
+                    A cél, hogy egy fügvénnyel beolvassuk a bitminta szövegfájt, és bit-minta szalaggá (tömbök tömbjévé)
+                    alakítsuk. <br>
+                    A szövegfájl beolvasó egy interfész, ami a külső adatfájlt illeszti a program belső adatfeldolgozó
+                    logikájához. <br>
+                    A raise KeyboardInterrupt utasítás akkor indul, ha rossz szövegfájlt adtunk meg.
+                    Ez kiváltja, a Ctrl-C bilenyűmegnyomás eseményt, és a program kilépési pontjára ugrik.
+
+                </p>
+                <img src="./images/patternRibbonFromFile.JPG" class="img-fluid my-img" alt="Interfész szerep">
+
+                <p>Az alábbi kódrészlet a szövegbeolvasó függvényt mutatja. Lényeges a return utasítás, ez adja vissza a
+                    tömbök tömbjét.</p>
+                <p>A <span class="my-code my-code-op">09_FenyjatekFajlbol.py</span> program részlete:</p>
+                <pre class="prettyprint lang-py">
+#mintaSzalag beolvasás fájlból
+def patternRibbonFromFile(file):
+    patternRibbon = []
+    if os.path.exists(file):
+        #sorok tömbbe olvasása: ahány sor annyi elem
+        f = open(file, "r")
+        rows = f.readlines()
+        #sorok tömbbé alakítása
+        for row in rows:
+            #sorvége karakterek levágása
+            row = row.rstrip()
+            #egy sor tömbbé alakítása
+            pattern = list(row)           
+            #sortömb hozzáadása az patternRibbon tömbhöz    
+            patternRibbon.append(pattern)
+    else:
+        print("{0} fájl nem létezik!".format(file))
+        raise KeyboardInterrupt #Olyan, mintha Ctrl-C-t nyomtuk volna
+    return patternRibbon</pre>
+
+                <h4 id="interfesz" class="anchor">A szövegfájl jelátszása</h4>
+                <p>
+                    A felhaszmálótól bekérjük a szövegfájlt, és azt beolvassuk.
+                    Az alábbi kódrészlet a program try blokkját mutatja, ahonnan a feldatot indítjuk.
+                </p>
+
+                <p></p>
+                <p>A <span class="my-code my-code-op">09_FenyjatekFajlbol.py</span> program részlete:</p>
+                <pre class="prettyprint lang-py">
+try:
+    file = raw_input("Adja meg a minta fájlt: ")
+    patternRibbon = patternRibbonFromFile(file)
+    LedFromPatternRibbon(patternRibbon, n)
+    GPIO.cleanup()
+    print("Vége. Pinek kikapcsolva")
+
+except KeyboardInterrupt:
+    GPIO.cleanup()
+    print("Folyamat megszakítva, Pinek kikapcsolva")</pre>
+
+
+            </div>
+        </div>
+        <!--/4. óra -->
+
+
+        <!-- 5-6. óra -->
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-3 w3-theme-l5 p-2 pb-4">
+                <h3>Előkészítés</h3>
+                <ol>
+                    <li>"5.óra" mappa elkészítése</li>
+                    <li>
+                        Letöltés:
+                        <a href="./sources/01_LedKigyujt.zip">01_LedKigyujt.py</a>
+                    </li>
+                    <li>
+                        Átnevezés:
+                        01_LedKigyujt.py -> 10_LedKozlekedesiLampa.py
+                    </li>
+                </ol>
+            </div>
+
+            <div class="col-12 col-lg-9 p-lg-3 p-2 pt-3 my-border">
+
+                <h2 id="o56" class="anchor">5 Közlekedési lámpa (5-6. óra)</h2>
+
+                <p>
+                    Feladat: az <a href="algoritmus.html">algoritmus</a> alapján készítse el, a próbapanelon összerakott
+                    áramkörrel a demonstrációban bemutatott közlkekedési lámpa szimuláló Pyton programot.
+                    A bal oldali ledsor középső sárga led-je nem kell a feladhoz, az áramkörből de ne szedjük ki!
+                </p>
+
+                <h3>5.1. Munkakörnyezet</h3>
+                <ul>
+                    <li>Egy programtervező elkészítette az algoritmus.</li>
+                    <li>Ön egy programozó, aki ennek alapján kell hogy dolgozzon</li>
+                    <li>A feladatához minden külső segítség használható</li>
+                    <li>Konzultálhat tanárával, bármelyik társával</li>
+                    <li>Használhatja az általunk elkészített <a href="help.html">help-et</a></li>
+                    <li>Használhatja az interneten elérhető forrásokat</a></li>
+                    <li>Használhatja az eddig elkészített forráskódjainkat, abból ha kell, másoljon át
+                        kórdrészleteket</a></li>
+                </ul>
+
+                <h3>5.2 Ajánlott stratégia.</h3>
+                <p>A kis lépések taktikáját alkalmazza. Legjobb, ha a programunk mindig produkál valamit, és
+                    folyamatosan működő állapotban van: Először kis dolgot csinálunk, és azonnal kipróbáljuk, majd ezt
+                    feljesztjük folyamatosan: fejlesztünk, kipróbáljuk, fejlesztünk, kipróbáljuk ... ciklust követjük.
+                </p>
+                <p>A feladatot osszuk fel kisebb lépésekre. Ajánlott lépéssorozatok:</p>
+
+                <h4>Első lépéssorozat:</h4>
+                <ul>
+                    <li>pin változók létrehozása és a tüskeszámok hozzárendelése.</li>
+                    <li>Pin tömb létrehozása</li>
+                    <li>Ciklussal kimenetnek állítjuk a pineket</li>
+                    <li>Megírjuk a teszt függvényt úgy, hogy gyújtsa ki mindegyik ledet</li>
+                    <li>A try-ban kiüzenjük a képernyőre hogy mi ez és hogy kell kilépni (Ctrl-C).</li>
+                    <li>Meghívjuk a teszt függvényt.</li>
+                </ul>
+                <h4>Második lépéssorozat:</h4>
+                <ul>
+                    <li>Pontosan dolgozzuk ki a Teszt függvényt, és mondjuk villogtasson 5-ször. A függvény ne
+                        közvetlenül a pineket vezérelje, hanem írjuk meg a mintával paraméterezett Jármű és közlekedési
+                        lámpákat kigyújtó két függvényt.</li>
+                </ul>
+                <h4>Harmadik lépéssorozat:</h4>
+                <ul>
+                    <li>Hozzuk létre a programban használandó változókat, és ha kell, rendeljük hozzá a megfelelő
+                        értékeket</li>
+                </ul>
+                <h4>Negyedik lépéssorozat:</h4>
+                <ul>
+                    <li>Hozzuk létre a végtelen ciklust</li>
+                    <li>A végtelen cikluon belül építsük vel az időt figyelő „if”-es feltétel szerkezetet.</li>
+                    <li>Töltsük meg tartalommal az „if”-es szerkezet pontjait.</li>
+                </ul>
+
+                <h3>5.3 Elnevezési stratégia</h3>
+                <ul>
+                    <li>Döntsük el, hogy az elnevezéseinket (változók, függvények) magyarul, vagy angolul akarjuk-e
+                        csinálni és ehhez következetesen tartsuk magunkat, a kettőt ne keverjük.</li>
+                    <li>Ha „magyarul” programozunk, semmiképpen ne használjunk ékezetes neveket.</li>
+                    <li>Az elnevezéseink legyenek kifejezőek, ne rövidítsük, bátran használjunk összetett szavakat</li>
+                    <li>Döntsük el, hogy elnevezéseinkben az: anyja_neve, vagy az anyjaNeve stílust
+                        használjuk, a kettőt ne keverjük</li>
+                    <li>A változóink kezdődjenek kis betűvel (ettől érdemes néha eltérni, ha a tartalom ezt megkívánja.
+                        pl „T” periódus idő, a „t” az idő) a függvényeink pedig nagybetűvel.</li>
+                </ul>
+
+            </div>
+        </div>
+        <!--/5-6. óra -->
+
+
+        <!--/Content -->
+    </div>
+
+
+    <!-- Footer -->
+    <div class="container my-lg-3 my-2 p-0 py-2 w3-theme-d3">
+        <p class="p-0 m-0 px-3">
+            <img src="./images/Raspberry.png" alt="Raspberry">
+            Raspberry fényjátékok
+        </p>
+    </div>
+    <!--/Footer -->
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

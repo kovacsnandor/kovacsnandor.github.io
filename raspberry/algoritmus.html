@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+        src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autoload=true&amp;skin=sunburst&amp;lang=py"
+        defer></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/my.css">
+    <link rel="stylesheet" href="./css/w3-theme-grey.css">
+
+
+    <title>RPi-Fényjákékok/Algoritmus</title>
+    <link rel='icon' href='favicon.png' type='image/x-icon' />
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Head -->
+    <div class="container p-0">
+        <div class="jumbotron jumbotron-fluid p-3 m-0">
+            <div class="row">
+                <div class="col-8">
+                    <h1 id="head1" class="display-4">Raspberry Pi fényjátékok</h1>
+                    <p id="head2" class="lead">Út a villany felkapcsolásától a jelzőlámpa algoritmus kódolásáig.
+                        <br>
+                        "Kódból vagyunk ..."
+                    </p>
+                </div>
+                <div class="col-4">
+                    <img src="./images/logoFenyjatek.jpg" id="head3" class="img-fluid my-img" alt="Logókép">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Head -->
+
+    <div class="container p-0 sticky-top">
+        <!-- Menu -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="orak.html">Foglalkozások</span></a>
+                    <a class="nav-item nav-link" href="algoritmus.html">Algoritmus</a>
+                    <a class="nav-item nav-link" href="help.html">Help</a>
+                </div>
+            </div>
+            <div>
+                <a href="#grafika" class="btn btn-outline-success px-2" role="button" aria-pressed="true">Grafikus</a>
+                <a href="#pinkiosztas" class="btn btn-outline-success px-2" role="button" aria-pressed="true">Pins</a>
+                <a href="#algoritmus" class="btn btn-outline-success px-2" role="button"
+                    aria-pressed="true">Algoritmus</a>
+            </div>
+        </nav>
+    </div>
+    <!--/Menu -->
+    <div class="container p-0">
+
+        <!-- Content -->
+        <h1>Algoritmus</h1>
+
+        <!-- Algoritmus -->
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-3 w3-theme-l5 p-2">
+                <h3>Előkészítés</h3>
+                <ol>
+                    <li>"5. óra" mappa elkészítése</li>
+                    <li>
+                        Letöltés:
+                        <a href="./sources/01_LedKigyujt.py">01_LedKigyujt.py</a>
+                    </li>
+                    <li>
+                        Átnevezés:
+                        01_LedKigyujt.py -> 10_LedKozlekedesiLampa.py
+                    </li>
+                </ol>
+
+            </div>
+
+            <div class="col-12 col-lg-9 p-lg-3 p-2 pt-3 my-border">
+                <h2>5. Közlekedési lámpa algoritmus (5-6. óra)</h2>
+                <h3 id="grafika" class="anchor">5.1 Az algoritmus grafikus szemléltetése</h3>
+                <table class="table table-bordered">
+                    <tr>
+                        <td rowspan="5" style="width: 30%">
+                            <img src="./images/Algoritmuskep.jpg" class="img-fluid my-img" alt="Grafikus algoritmus">
+                        </td>
+                        <th>Jármű</th>
+                        <th>Gyalogos</th>
+                        <th>idő (sec)</th>
+                    </tr>
+                    <tr>
+                        <td>piros</td>
+                        <td>zöld</td>
+                        <td>tPiros = 10</td>
+                    </tr>
+                    <tr>
+                        <td>piros-sárga</td>
+                        <td>villogó zöld</td>
+                        <td>tPirosSarga = 3</td>
+                    </tr>
+                    <tr>
+                        <td>zöld</td>
+                        <td>piros</td>
+                        <td>tZold = 10</td>
+                    </tr>
+                    <tr>
+                        <td>sárga</td>
+                        <td>piros</td>
+                        <td>tSarga = 3</td>
+                    </tr>
+                </table>
+
+                <h3 id="pinkiosztas" class="anchor">5.2 Pin kiosztás</h3>
+
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th style="width: 33%">Micsoda</th>
+                            <th style="width: 33%">Szín</th>
+                            <th style="width: 33%">Pin szám</th>
+                        </tr>
+                        <tr>
+                            <th rowspan="3" style="vertical-align: middle">Jármű</td>
+                            <td>piros</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>sárga</td>
+                            <td>38</td>
+                        </tr>
+                        <tr>
+                            <td>zöld</td>
+                            <td>36</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2" style="vertical-align: middle">Gyalogos</td>
+                            <td>piros</td>
+                            <td>37</td>
+                        </tr>
+                        <tr>
+                            <td>zöld</td>
+                            <td>33</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <h3 id="algoritmus" class="anchor">5.3 Az algoritmus</h3>
+                <pre class="prettyprint lang-pyton linenums">
+//Program könyvtárak Importálás
+GPIO és time
+//GPIO beállítások
+//Ne legyenek üzenetek
+//Pin kiosztás tüskeszám alapján
+//GPIO alaphelyzetbe
+
+//Pin változók Pin számhoz rendelése
+//A Pin kiosztás táblázat alapján
+pJarmuPiros  = 40
+...
+
+//Pinek tömbjének létrehozása
+pinek = [pJarmuPiros , ... ]
+
+//Pinek kimenetnek definiálása ciklussal (for)
+ciklus 1 ... n
+    pinek[i] := GPIO.OUT
+end ciklus
+
+//Függvények
+//Bemenetek: piros, sárga zöld: 1 vagy 0
+//1: lámpa ég, 0: lámpa nem ég
+//A paramétereknek megfelelően gyulladnak ki a lámpái
+function JarmuLampa(piros, sárga, zöld)
+    pJarmuPiros := piros
+    ...
+end function
+
+
+//Bemenetek: piros, zöld: 1 vagy 0
+//1: lámpa ég, 0: lámpa nem ég
+//A paramétereknek megfelelően gyulladnak ki a lámpái
+function GyalogosLampa(piros, zöld)
+    pGyalogosPiros := piros
+    ...
+end function
+
+
+//Lámpa teszt függvény: 
+//n-szer felgyullad és elalszik mindegyik lámpa
+//0,5 másodpercenként
+function Test(n)
+    print("Teszt...")
+    egNemEg := 1
+    for i ... n
+        JarmuLampa(egNemEg, egNemEg, egNemEg)
+        JarmuLampa(egNemEg, egNemEg)
+        egNemEg := not egNemEg
+        vár 0,5s
+    end for
+    várakozás(0,5s)
+    egNemEg := 0
+    JarmuLampa(egNemEg, egNemEg, egNemEg)
+    JarmuLampa(egNemEg, egNemEg)
+    print("Teszt vége")
+end function
+
+//A program paraméterei
+T := 1.0	//Órajel periódusideje (1s)
+k := 5	//Gyorsítási faktor
+TvalosIdo := T k-ad része //Valós várakozás: tényleges órajel ütem
+
+//Gyalogos zöld villogási rekvenciája:
+f := TvalosIdo reciproka, szorozva 2-vel 
+t := 0 //Időt mutató változó: ez az idő
+
+//Lámpa idők: meddig égnek az egyes lámpák
+//Lásd fent Táblázat1 utolsó oszlopa
+tPiros := 10
+...
+tSarga := 3
+
+//összidő:
+tOsszido := tPiros + ... + tSarga
+
+//A program indulási pontja
+
+try:
+    //Teszt indítása (A lámpák villanjanak 5-ször)
+    Teszt(...)
+    
+    //A program nevének, állapotának és a kilépés módjának kiírása:
+    //Legyen kiírva a gyorsítás értéke a paraméter felhasználásával
+    print(...)
+
+    do while True //végtelen ciklus
+        if t == tOsszido
+            //Ha elértük az összidőt, az idő induljon újra
+            t := 0
+        end if
+
+        //Kezdés:
+        if t == 0
+            //Jármű lámpa: piros
+            JarmuLampa(...)
+            //Gyalogos lámpa: zöld
+            GyalogosLampa(...)
+        end if
+
+        //Vége a pirosnak (jármű)
+        if t == tPiros
+            //Jármű lámpa: piros-sárga
+            JarmuLampa(...)
+            //Gyalogos zöld f-el villog
+            p := GPIO.PWM(...)
+            p.start(50)
+        end if
+
+        //Vége a piros-sárgának (jármű)
+        if t == tPiros + tSargaPiros
+            //Jármű lámpa: zöld
+            JarmuLampa(...)
+            //Gyalogos zöld villogás stop:
+            p.stop()
+            //Gyalogos lámpa piros
+            GyalogosLampa(...)
+        end if
+        
+        //Vége a zöldnek (jármű)
+        if t == tPiros + tSargaPiros + tZold
+            //Jármű lámpa: sárga
+            JarmuLampa(...)
+            //Gyalogos lámpa piros
+            GyalogosLampa(...)
+        end if
+
+        t := eggyel megnöveljük
+        //Valós órajel ideig várakozunk
+        várakozás(TvalosIdo)
+
+    end do
+
+except KeyboardInterrupt:
+    print("Pinek lekapcsolva")
+    GPIO alaphelyzet</pre>
+            </div>
+        </div>
+        <!--/Algoritmus -->
+
+
+        <!--/Content -->
+    </div>
+
+
+    <!-- Footer -->
+    <div class="container my-lg-3 my-2 p-0 py-2 w3-theme-d3">
+        <p class="p-0 m-0 px-3">
+            <img src="./images/Raspberry.png" alt="Raspberry">
+            Raspberry fényjátékok
+        </p>
+    </div>
+    <!--/Footer -->
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

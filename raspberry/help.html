@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+        src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autoload=true&amp;skin=sunburst&amp;lang=py"
+        defer></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/my.css">
+    <link rel="stylesheet" href="./css/w3-theme-grey.css">
+
+
+    <title>RPi-Fényjákékok/Help</title>
+    <link rel='icon' href='favicon.png' type='image/x-icon' />
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Head -->
+    <div class="container p-0">
+        <div class="jumbotron jumbotron-fluid p-3 m-0">
+            <div class="row">
+                <div class="col-8">
+                    <h1 id="head1" class="display-4">Raspberry Pi fényjátékok</h1>
+                    <p id="head2" class="lead">Út a villany felkapcsolásától a jelzőlámpa algoritmus kódolásáig.
+                        <br>
+                        "Kódból vagyunk ..."
+                    </p>
+                </div>
+                <div class="col-4">
+                    <img src="./images/logoFenyjatek.jpg" id="head3" class="img-fluid my-img" alt="Logókép">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Head -->
+
+    <div class="container p-0 sticky-top">
+        <!-- Menu -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="orak.html">Foglalkozások</span></a>
+                    <a class="nav-item nav-link" href="algoritmus.html">Algoritmus</a>
+                    <a class="nav-item nav-link" href="help.html">Help</a>
+                </div>
+            </div>
+            <!-- <div>
+                <a href="#grafika" class="btn btn-outline-success" role="button" aria-pressed="true">Grafikus
+                    algoritmus</a>
+                <a href="#pinkiosztas" class="btn btn-outline-success" role="button" aria-pressed="true">Pin
+                    kiosztás</a>
+                <a href="#algoritmus" class="btn btn-outline-success" role="button" aria-pressed="true">Algoritmus</a>
+            </div> -->
+        </nav>
+    </div>
+    <!--/Menu -->
+
+    <div class="container p-0">
+
+        <!-- Content -->
+        <h1>Raspbery Pyton help</h1>
+
+
+        <!-- Szintaktika, változók -->
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-3 w3-theme-l5 p-2">
+                <h2>Szintaktika, változók</h2>
+            </div>
+            <div class="col-12 col-lg-9 p-0">
+                <h3 class="ml-2">Pyton szintaktika</h3>
+
+                <!-- Pyton szintaktika -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#pySzintaktika"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Pyton szintaktika
+                    </a>
+                </p>
+
+                <div class="collapse" id="pySzintaktika">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <ol>
+                            <li>A sorok végén nincs pontosvessző</li>
+                            <li>A kódblokkot nem {}-al, hanem behúzással hozzuk létre</li>
+                            <li>Megjegyzés: #</li>
+                        </ol>
+                        <pre class="prettyprint lang-py">
+#Példák:
+#helyes alak
+if x == 24:
+    z = 12
+    print(z)
+
+#Szintakikai hiba!!!
+#itt az if-hez semmi nem tartozik:
+#Az if után legalább egy sort beljebb kell kezdeni
+if x == 24:
+z = 12 #Hibás sor !!!
+print(z)</pre>
+                    </div>
+                </div>
+                <!--/Pyton szintaktika -->
+
+                <!-- Sorba tördelés -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#multiLine"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Sorba tördelés
+                    </a>
+                </p>
+
+                <div class="collapse" id="multiLine">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Egy kifejezést több sorba a "\"-el, vagy ()-el lehet. Példák:</p>
+                        <pre class="prettyprint lang-py">
+#A kód több sorba tördelése: \ vagy (...)    
+
+if x >= 2 and x <= 12:
+    print(x)
+
+if  x >= 2 and \
+    x <= 12:
+    print(x)
+
+if  (x >= 2 and 
+    x <= 12):
+    print(x)    
+
+z = "alma"  + "géza"  + "körte" + "valami"
+
+z = "alma"  + "géza"  + \
+    "körte" + "valami"
+
+z = ("alma"  + "géza"  + 
+    "körte" + "valami")</pre>
+                    </div>
+                </div>
+                <!--/Sorba tördelés -->
+
+                <h3 class="ml-2">Változók, típusok</h3>
+
+                <!-- Deklaráció, típusok -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#valtozok"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Deklaráció, literálok
+                    </a>
+                </p>
+
+                <div class="collapse" id="valtozok">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <ol>
+                            <li>Változók létrehozása: értékadással</li>
+                            <li>Változók típusa: az értékből ismeri fel</li>
+                        </ol>
+                        <p>Literálok:</p>
+                        <pre class="prettyprint lang-py">
+#integer
+x = 12
+y = -35
+
+z = 2.56 #float
+
+#string
+szoveg = "Ez  egy sztring" 
+szoveg = 'Ez  egy sztring'
+
+#logikai
+a = True
+b = False
+
+#tömb literál
+z = [1, 3, "pista", "géza", True]</pre>
+                    </div>
+                </div>
+                <!--/Deklaráció, típusok -->
+
+                <!-- Típus konverzió -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#tipusKonv"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Típus konverzió
+                    </a>
+                </p>
+
+                <div class="collapse" id="tipusKonv">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Változók típusának megváltoztatása (explicit konverzió):</p>
+                        <pre class="prettyprint lang-py">
+x = "24"
+y = int(x) #integer
+
+#Számrendszer átváltás
+x = "1111"
+y = int(x,2) #Eredmény: 15
+print(y)
+
+x= "25.6"
+y = float(x) #float
+
+x = 24 #int
+y = str(x) #string
+
+#String karakter tömbbé alakítás
+x = "abc"
+y = list(x) #Eredmény: ["a", "b", "c"]
+print(y)</pre>
+                    </div>
+                </div>
+                <!--/Típus konverzió -->
+
+                <!-- String konkatenáció -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#konkat"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        String konkatenáció
+                    </a>
+                </p>
+
+                <div class="collapse" id="konkat">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Sztring kifejezésekbe hogyan lehet változót illeszteni:</p>
+                        <pre class="prettyprint lang-py">
+kor = 25
+foglalkozas = "szerelő"
+#hagyományos
+print("Béla" + " " + str(kor) + "éves" + " " + foglalkozas)
+
+#.format
+print("Béla {0} éves {1}".format(kor, foglalkozas))
+
+#f-sztring
+print(f"Béla {kor} éves {foglalkozas}")</pre>
+                    </div>
+                </div>
+                <!--/String konkatenáció -->
+
+            </div>
+        </div>
+        <!-- /Szintaktika, változók -->
+
+        <!-- GPIO -->
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-3 w3-theme-l5 p-2">
+                <h2>GPIO</h2>
+            </div>
+            <div class="col-12 col-lg-9 p-0">
+                <h3 class="ml-2">Alapok</h3>
+
+                <!-- GPIO előkészítés -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#gpioStart"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        GPIO előkészítés
+                    </a>
+                </p>
+
+                <div class="collapse" id="gpioStart">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>A GPIO portok előkészítése használatra</p>
+                        <pre class="prettyprint lang-py">
+#A GPIO modul behívása
+import RPi.GPIO as GPIO
+#Az időzítő modul behívása
+import time
+
+#Figyelmezetetések kikapcsolása
+GPIO.setwarnings(False)
+
+#tüskék fizikai kiosztás szerint
+GPIO.setmode(GPIO.BOARD)
+
+#tüskék alaphelyzet
+GPIO.cleanup()</pre>
+                    </div>
+                </div>
+                <!--/GPIO előkészítés -->
+
+                <!-- GPIO kimenet -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#gpioOutput"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        GPIO kimenet
+                    </a>
+                </p>
+
+                <div class="collapse" id="gpioOutput">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>A GPIO port legyen kimenet</p>
+                        <pre class="prettyprint lang-py">
+#36-os tüske kimenet
+GPIO.setup(36, GPIO.OUT)</pre>
+                    </div>
+                </div>
+                <!--/GPIO kimenet -->
+
+                <!-- LED be-ki -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#ledOnOff"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        LED be-ki
+                    </a>
+                </p>
+
+                <div class="collapse" id="ledOnOff">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Led be és kikapcsolása 3 módszerrel</p>
+                        <pre class="prettyprint lang-py">
+#Led bekapcsolása
+#GPIO.output(36, GPIO.HIGH)
+GPIO.output(36, 1)
+#GPIO.output(36, True)
+
+#Led kikapcsolása
+#GPIO.output(36, GPIO.LOW)
+GPIO.output(36, 0)
+#GPIO.output(36, False)</pre>
+                    </div>
+                </div>
+                <!--/LED be-ki -->
+
+                <!-- LED PWM -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#PWM" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        GPIO PWM
+                    </a>
+                </p>
+
+                <div class="collapse" id="PWM">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>GPIO port PWM üzemmódba kapcsolása (f=50Hz, kitöltési tényező: 30%) és indítás</p>
+                        <pre class="prettyprint lang-py">
+#36. tüske legyen kimenet
+pin = 36
+GPIO.setup(pin, GPIO.OUT)
+frequency = 50
+fill = 30
+#A pin PWM üzemmódba kapcsolása
+p = GPIO.PWM(pin, frequency)
+#indítás
+p.start(fill)</pre>
+                        <p>Frekvencia megváltoztatása:</p>
+                        <pre class="prettyprint lang-py">
+p.ChangeFrequency(frequency)</pre>
+
+                        <p>Kitöltés megváltoztatása:</p>
+                        <pre class="prettyprint lang-py">
+p.ChangeDutyCycle(fill)</pre>
+
+                        <p>Megállítás:</p>
+                        <pre class="prettyprint lang-py">
+p.stop()</pre>
+
+                        <p>Újra indítás:</p>
+                        <pre class="prettyprint lang-py">
+p = GPIO.PWM(pin, frequency)
+p.start(fill)</pre>
+                    </div>
+                </div>
+                <!--/LED PWM -->
+
+                <h3 class="ml-2">Mintapéldák</h3>
+
+                <!-- LED kigyújt -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#ledOn"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        LED kigyújt
+                    </a>
+                </p>
+
+                <div class="collapse" id="ledOn">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Led kigyújtása</p>
+                        <pre class="prettyprint lang-py">
+import RPi.GPIO as GPIO
+import time
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.cleanup()
+
+#A program paraméterei:
+#Pin definiálása
+pin = 36
+onOff = 1
+
+#A "pin" tüske kimenet
+GPIO.setup(pin, GPIO.OUT)
+
+#Led kigyújt
+GPIO.output(pin, onOff)                           
+
+print("Pin_%s világít. Kilép Ctrl-C" %(pin))
+try:
+    while True:
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    print("Pinek lekapcsolva")
+    GPIO.cleanup()</pre>
+                    </div>
+                </div>
+                <!--/LED kigyújt -->
+
+                <!-- LED villogtatás -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#ledBlink"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        LED villogtatás
+                    </a>
+                </p>
+
+                <div class="collapse" id="ledBlink">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Led villogtatása végtelen ciklussal</p>
+                        <pre class="prettyprint lang-py">
+import RPi.GPIO as GPIO
+import time
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.cleanup()
+
+#Paraméterek
+pin = 36 #Pin definiálása
+T = 0.1 #Villogás periódusideje
+Tv = T/2
+onOff = 1
+
+#A "pin" tüske kimenet
+GPIO.setup(pin, GPIO.OUT)
+
+print("Pin_%s villog. Kilép Ctrl-C" %(pin))
+try:
+while True:
+GPIO.output(pin, onOff)
+onOff = not onOff
+time.sleep(Tv)
+
+except KeyboardInterrupt:
+print("Pinek lekapcsolva")
+GPIO.cleanup()</pre>
+                    </div>
+                </div>
+                <!--/LED villogtatás -->
+
+                <!-- LED PWM -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#ledPWM"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        LED PWM
+                    </a>
+                </p>
+
+                <div class="collapse" id="ledPWM">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Led villogtatása PWM négyszögjellel: f=50Hz, 30%</p>
+                        <pre class="prettyprint lang-py">
+import RPi.GPIO as GPIO
+import time
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.cleanup()
+
+#36. tüske legyen kimenet
+pin = 36
+GPIO.setup(pin, GPIO.OUT)
+frequency = 50
+fill = 30
+#A pin PWM üzemmódba kapcsolása
+p = GPIO.PWM(pin, frequency)
+#indítás
+p.start(fill)
+print("villogás: f={0} Hz kitöltés: {1} % Leállítás: Ctrl-C" .format(frequency, fill))
+
+try:
+    while True:
+        cont = raw_input("Folytat? y/n: ")
+        if cont == "n":
+            p.stop()
+            continue
+        
+        if cont == "y":
+            p = GPIO.PWM(pin, frequency)
+            p.start(fill)
+            
+        f = raw_input("f={0}Hz {1}% Frekvencia (1-1000): " .format(frequency, fill))
+        k = raw_input("f={0}Hz {1}% Kitöltés (1-100): " .format(frequency, fill))
+        print("------- Kilép: Ctrl-C ----------")
+        if k.isdigit():
+            fill = int(k)
+            if fill in range(1,101):
+                p.ChangeDutyCycle(fill)
+                
+        if f.isdigit():
+            frequency = int(f)
+            if frequency in range(1,1001):
+                p.ChangeFrequency(frequency)     
+        
+except KeyboardInterrupt:
+    print("Pinek lekapcsolva")
+    GPIO.cleanup()</pre>
+                    </div>
+                </div>
+                <!--/LED PWM -->
+
+
+            </div>
+        </div>
+        <!--/GPIO -->
+
+
+
+        <!-- Tömbök -->
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-3 w3-theme-l5 p-2">
+                <h2>Tömbök</h2>
+            </div>
+
+            <div class="col-12 col-lg-9 p-0">
+                <!-- Tömb létrehozása -->
+                <h3 class="ml-2">Tömb létrehozása</h3>
+
+                <!-- Tömb literál -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#tombLiteral"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Tömb literál
+                    </a>
+                </p>
+
+                <div class="collapse" id="tombLiteral">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Tömb létrehozása literállal. A tömbnek különböző típusú elemei is lehetnek.</p>
+                        <pre class="prettyprint lang-py">
+#Tömb literál
+tomb1 = [1, "alma", 2, 4, True, 2]</pre>
+                    </div>
+                </div>
+                <!--/Tömb literál -->
+
+                <!-- Tömb hozzáfűzéssel -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#tombAppend"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Tömb hozzáfűzéssel
+                    </a>
+                </p>
+
+                <div class="collapse" id="tombAppend">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Üres tömb feltöltése append segítségével.</p>
+                        <pre class="prettyprint lang-py">
+#Létrehozunk egy üres tömböt és
+tomb = []
+#append-el hozzáfűzünk három elemet
+tomb.append(10)
+tomb.append("feri")
+tomb.append(7)
+#Eredmény: [10, "feri", 7]</pre>
+                    </div>
+                </div>
+                <!--/Tömb hozzáfűzéssel -->
+                <!-- Tömb elemeinek száma -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#tombLen"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Tömb elemeinek száma
+                    </a>
+                </p>
+
+                <div class="collapse" id="tombLen">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>A tömb elemeinek száma len függvénnyel</p>
+                        <pre class="prettyprint lang-py">
+#Tömb literál
+tomb = [1, "alma", 2, 4, True, 2]                            
+tombMerete = len(tomb)
+print(tombMerete) #Eredmény: 6</pre>
+                    </div>
+                </div>
+                <!--/Tömb elemeinek száma -->
+                <!-- /Tömb létrehozása -->
+
+                <!-- Tömb bejárása -->
+                <h3 class="ml-2">Tömb bejárása</h3>
+
+                <!-- Hozzáférés indexszel -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#tombIndex"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Hozzáférés indexszel
+                    </a>
+                </p>
+
+                <div class="collapse" id="tombIndex">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Tömb elemeihez indexeken keresztül férhetünk hozzá.</p>
+                        <pre class="prettyprint lang-py">
+#Tömb literál
+tomb1 = [1, "alma", 2, 4, True, 2]
+
+#Tömb elemeinek elérése indexxel
+print(3 * tomb1[0]) #Eredmény: 3
+print(tomb1[1]) #Eredmény: alma
+print(not tomb1[4]) #Eredmény: False</pre>
+                    </div>
+                </div>
+                <!--/Hozzáférés indexszel -->
+
+                <!-- Tömb gyűjteményes bejárása -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#tombGyujtemeny"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Tömb gyűjteményes bejárása
+                    </a>
+                </p>
+
+                <div class="collapse" id="tombGyujtemeny">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>A tömb elemeit ciklussal, index nélkül is bejárhatjuk.</p>
+                        <pre class="prettyprint lang-py">
+for elem in tomb:
+    print(elem)</pre>
+                    </div>
+                </div>
+                <!--/Tömb gyűjteményes bejárása -->
+
+                <!-- Tömb bejárása indexszel-->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#tombForIndex"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Tömb bejárása indexszel
+                    </a>
+                </p>
+
+                <div class="collapse" id="tombForIndex">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>A range függvény egy számtömböt hoz létre:</p>
+                        <pre class="prettyprint lang-py">
+#range kezdő index megadása nélkül
+print(range(5))
+#Eredmény: [0, 1, 2, 3, 4]
+
+#range kezdő indexszel
+print(1, range(5))
+#Eredmény: [1, 2, 3, 4, 5]</pre>
+                        <p>A tömb bejárása ciklussal, indexekkel.<br>A range függvénnyel a tömb indexeinek tömbjét
+                            állítjuk elő</p>
+                        <pre class="prettyprint lang-py">
+#range: kezdő index megadása nélkül
+for i in range(len(tomb)):
+    print(tomb[i])
+
+#range: kezdő index megadásával
+for i in range(0,len(tomb)):
+    print(tomb[i])</pre>
+                    </div>
+                </div>
+                <!--/Tömb bejárása indexszel -->
+
+                <h3 class="ml-2">Egyebek</h3>
+
+                <!-- A sztring mint tömb -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#tombSztring"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        A sztring mint tömb
+                    </a>
+                </p>
+
+                <div class="collapse" id="tombSztring">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>A sztring karakterek tömbje, ahol az első elem a 0-adik indexű</p>
+                        <pre class="prettyprint lang-py">
+#Sztring mint tömb, karakterei indexekkel elérhető
+szoveg = "Heló világ!"
+c = szoveg[1]
+print(c)  #Eredmény: e
+
+#Sztring karaktereinek bejárása
+for c in szoveg:
+    print(c)</pre>
+                    </div>
+                </div>
+                <!--/A sztring mint tömb -->
+
+                <!-- Sztring darabolás (split) -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#tombSplit"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Sztring darabolás (split)
+                    </a>
+                </p>
+
+                <div class="collapse" id="tombSplit">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>A mondatot szavak tömbjévé alakítjuk. A határoló a szóköz. <br> A split a join fordítottja.
+                        </p>
+                        <pre class="prettyprint lang-py">
+szoveg = "Ez egy mondat."
+tombSzavak = szoveg.split(" ")
+print(tombSzavak)
+#Eredmény: ["Ez", "egy", "mondat"]</pre>
+                    </div>
+                </div>
+                <!--/Sztring darabolás (split) -->
+
+                <!-- Sztringből karaktertömb (list) -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#tombList"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Sztringből karaktertömb (list)
+                    </a>
+                </p>
+
+                <div class="collapse" id="tombList">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>A szöveget list-el karaktereinek tömbjévé alakíthatjuk.</p>
+                        <pre class="prettyprint lang-py">
+szoveg = "Heló"
+tombKarakterek = list(szoveg)
+print(tombKarakterek)
+#Eredmény: ['H', 'e', 'l', 'ó']</pre>
+                    </div>
+                </div>
+                <!--/Sztringből karaktertömb (list) -->
+
+                <!-- Tömb összeragasztása stringgé -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#tombJoin"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Tömb összeragasztása stringgé (join)
+                    </a>
+                </p>
+
+                <div class="collapse" id="tombJoin">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>A tömb elemeit tetszőleges elválasztó segítségével sztriggé lehet alakítani.</p>
+                        <pre class="prettyprint lang-py">
+szavak = ["Ez", "egy", "mondat"]
+szoveg = "".join(szavak)
+print(szoveg) #Eredmény: Ezegymondat
+szoveg = " ".join(szavak)
+print(szoveg) #Eredmény: Ez egy mondat
+szoveg = ", ".join(szavak)
+print(szoveg) #Eredmény: Ez, egy, mondat
+#Elválasztás tabulátorral
+szoveg = "\t".join(szavak)
+print(szoveg) #Eredmény: Ez\tegy\tmondat</pre>
+                    </div>
+                </div>
+                <!--/Tömb összeragasztása stringgé -->
+
+
+
+                <!-- /Tömb bejárása -->
+
+
+            </div>
+        </div>
+        <!-- /Tömbök -->
+
+        <!-- Vezérlési szerkezetek -->
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-3 w3-theme-l5 p-2">
+                <h2>Vezérlési szerkezetek</h2>
+            </div>
+            <div class="col-12 col-lg-9 p-0">
+                <!-- Elágazás -->
+                <h3 class="ml-2">Elágazás</h3>
+
+                <!-- If else -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#ifElse"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        if else
+                    </a>
+                </p>
+
+                <div class="collapse" id="ifElse">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Két eset van: nagykorú, vagy nem nagykorú</p>
+                        <pre class="prettyprint lang-py">
+kor = 15
+if kor >= 18:
+    print("Ihat sört")
+else:
+    print("Kólát iszik")
+#Eredmény: Kólát iszik</pre>
+                    </div>
+                </div>
+                <!--/If else -->
+
+                <!-- Összetett if -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#ifIf"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        if if
+                    </a>
+                </p>
+
+                <div class="collapse" id="ifIf">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Három eset van: nagyobb, kisebb, egyenlő: Egymásba ágyazott if</p>
+                        <pre class="prettyprint lang-py">
+a = 5
+b = 12
+if a > b:
+    print("{0} > {1}".format(a,b))
+else:    
+    if a < b:
+        print("{0} < {1}".format(a,b))
+    else:     
+        print("{0} = {1}".format(a,b))
+
+#Eredmény: 5 < 12</pre>
+                    </div>
+                </div>
+                <!--/Összetett if -->
+
+                <!-- elif -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#elif"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        elif
+                    </a>
+                </p>
+
+                <div class="collapse" id="elif">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Három eset van: nagyobb, kisebb, egyenlő: Az elif áttekinthetőbb</p>
+                        <pre class="prettyprint lang-py">
+a = 5
+b = 5
+if a > b:
+    print("{0} > {1}".format(a,b))
+elif a < b:
+    print("{0} < {1}".format(a,b))
+else:     
+    print("{0} = {1}".format(a,b))
+
+#Eredmény: 5 = 5</pre>
+                    </div>
+                </div>
+                <!--/elif -->
+
+                <!-- elif példa -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#elifPelda"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Tipikus elif példa
+                    </a>
+                </p>
+
+                <div class="collapse" id="elifPelda">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Egy tipikus elif példa: kategorizálás</p>
+                        <pre class="prettyprint lang-py">
+pont = 45
+oztalyzat = 0
+
+if pont < 25:
+    osztalyzat = 1
+elif pont >= 25 and pont < 40:
+    osztalyzat = 2
+elif pont >= 40 and pont < 60:
+    osztalyzat = 3
+elif pont >= 60 and pont < 80:
+    osztalyzat = 4
+elif pont >= 80:
+    osztalyzat = 5
+
+print(osztalyzat) #Eredmény: 3</pre>
+                    </div>
+                </div>
+                <!--/elif -->
+
+                <!--/Elágazás -->
+
+
+                <h3 class="ml-2">Ciklus</h3>
+
+                <!-- Végtelen ciklus -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#whileVegtelen"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Végtelen ciklus
+                    </a>
+                </p>
+
+                <div class="collapse" id="whileVegtelen">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Végtelen ciklus használata Raspberry projektekben:</p>
+                        <pre class="prettyprint lang-py">
+#Paraméterek
+pin = 36 #Pin definiálása
+T = 0.1 #Villogás periódusideje
+Tv = T/2
+onOff = 1
+
+#A "pin" tüske kimenet
+GPIO.setup(pin, GPIO.OUT)
+
+print("Pin_{0} villog. Kilép Ctrl-C".format(pin))
+try:
+    #Végtelen ciklus
+    while True:
+        GPIO.output(pin, onOff)
+        onOff = not onOff
+        time.sleep(Tv)
+
+except KeyboardInterrupt:
+    print("Pinek lekapcsolva")
+    GPIO.cleanup()</pre>
+                    </div>
+                </div>
+                <!--/Végtelen ciklus -->
+
+                <!-- For ciklus -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#forRasp"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        For ciklus
+                    </a>
+                </p>
+
+                <div class="collapse" id="forRasp">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>For ciklus használata Raspberry projektekben:</p>
+                        <pre class="prettyprint lang-py">
+#Pinek definiálása
+pins = [37,35,33,40,38,36]
+T = 0.5 #Villogás periódusideje
+Tv = T/2
+
+#For ciklussal: a Pinek kimenetek
+for pin in pins:
+    GPIO.setup(pin, GPIO.OUT)</pre>
+                    </div>
+                </div>
+                <!--/For ciklus -->
+
+                <!-- continue, break -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#cb" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        continue, break
+                    </a>
+                </p>
+
+                <div class="collapse" id="cb">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>A continue és break szemléltetése:</p>
+                        <pre class="prettyprint lang-py">
+#continue (ugorj a ciklus fejéhez): 
+szoveg = "pata"
+
+#Kimaradnak az "a" betűk
+for val in szoveg:
+    if val == "a":
+        continue
+    print(val)
+
+#Eredmény: P    
+#Eredmény: t    
+
+#break (ciklus vége): 
+szoveg = "papa"
+
+#Az első "a" betűnél kiszáll
+for val in szoveg:
+    if val == "a":
+        break
+    print(val)    
+
+#Eredmény: P</pre>
+                    </div>
+                </div>
+                <!--/continue, break -->
+
+
+                <!-- Try-Except -->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#tryExc"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Try-Except
+                    </a>
+                </p>
+
+                <div class="collapse" id="tryExc">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Try-Except használata a végtelen ciklusból való kiugrásra:<br>
+                            Ctrl-C megnyomása kiváltja a KeyboardInterrupt eseményt, és a program az except-re ugrik
+                        </p>
+                        <pre class="prettyprint lang-py">
+try:
+    #Végtelen ciklus
+    while True:
+        GPIO.output(pin, onOff)
+        onOff = not onOff
+        time.sleep(Tv)
+
+except KeyboardInterrupt:
+    print("Pinek lekapcsolva")
+    GPIO.cleanup()</pre>
+                    </div>
+                </div>
+                <!--/Try-Except -->
+
+                <!-- Except programból-->
+                <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#ExcPrg"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Except programból
+                    </a>
+                </p>
+
+                <div class="collapse" id="ExcPrg">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>Try-Except használata a végtelen ciklusból való kiugrásra:<br>
+                            Nincs meg a fájl, a KeyboardInterrupt eseményt programból kezdeményezzük: raise
+                            KeyboardInterrupt<br>
+
+                        </p>
+                        <pre class="prettyprint lang-py">
+def patternRibbonFromFile(file):
+    patternRibbon = []
+    if os.path.exists(file):
+        #file kezelése
+        #...
+    else:
+        print("{0} fájl nem létezik!".format(file))
+        #file nem létezik, kiváltjuk a KeyboardInterrupt eseményt
+        raise KeyboardInterrupt
+    return patternRibbon
+
+file = "minta1.txt"
+
+#...
+    
+try:
+    file = raw_input("Adja meg a minta fájlt: ")
+    patternRibbon = patternRibbonFromFile(file)
+    LedFromPatternRibbon(patternRibbon, n)
+    GPIO.cleanup()
+    print("Vége. Pinek kikapcsolva")
+
+except KeyboardInterrupt:
+    GPIO.cleanup()
+    print("Folyamat megszakítva, Pinek kikapcsolva")</pre>
+                    </div>
+                </div>
+                <!--/Except programból -->
+
+
+
+
+            </div>
+        </div>
+        <!--/Vezérlési szerkezetek -->
+
+
+
+
+        <!-- Minta -->
+        <!-- <div class="row m-0 my-4">
+            <div class="col-12 col-lg-3 w3-theme-l5 p-2">
+                <h2>GPIO</h2>
+            </div>
+            <div class="col-12 col-lg-9 p-0">
+                <h3 class="ml-2">Alapok</h3> -->
+
+        <!-- GPIO előkészítés -->
+        <!-- <p>
+                    <a class="btn btn-outline-success btn-sm px-2 ml-4" data-toggle="collapse" href="#gpioStart"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        GPIO előkészítés
+                    </a>
+                </p>
+
+                <div class="collapse" id="gpioStart">
+                    <div class="my-border p-lg-3 p-2 mb-3">
+                        <p>A GPIO portok előkészítése használatra</p>
+                        <pre class="prettyprint lang-py">
+#A GPIO modul behívása</pre>
+                    </div>
+                </div> -->
+        <!--/GPIO előkészítés -->
+        <!-- </div>
+        </div> -->
+        <!-- /Minta -->
+
+
+        <!--/Content -->
+    </div>
+
+
+    <!-- Footer -->
+    <div class="container my-lg-3 my-2 p-0 py-2 w3-theme-d3">
+        <p class="p-0 m-0 px-3">
+            <img src="./images/Raspberry.png" alt="Raspberry">
+            Raspberry fényjátékok
+        </p>
+    </div>
+    <!--/Footer -->
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

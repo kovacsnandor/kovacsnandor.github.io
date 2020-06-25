@@ -1,0 +1,136 @@
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L5,
+li.L6,
+li.L7,
+li.L8 {
+    list-style-type: decimal !important;
+}
+
+/* White background color for all even-numbered lines */
+li.L0,
+li.L2,
+li.L4,
+li.L6,
+li.L8 {
+    background-color: #000;
+}
+
+/* Light-gray background color for all odd-numbered lines */
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 {
+    background-color: #000;
+}
+
+
+
+pre.prettyprint {
+    font-size: 1em;
+    width: auto !important;
+    margin: 16px 0px 8px 0px !important;
+    overflow: auto !important;
+    /* white-space: pre;
+    word-wrap: normal; */
+
+    /* background-color: grey !important; */
+}
+
+.my-img {
+    padding: 0px;
+}
+
+.my-border {
+    border: 1px dashed gray;
+    border-radius: 10px;
+}
+
+.my-code {
+    font-family: monospace;
+    background-color: black;
+    color: white;
+    padding: 3px;
+    font-size: 1.2em;
+}
+
+.my-code-op {
+    color: #e28964;
+}
+
+.anchor {
+    display:block;
+    padding-top:50px;
+    margin-top:-50px;
+ }
+
+
+/* Média szűrők */
+
+/* Kis esjközök */
+@media (max-width: 575.98px) {
+    #head2, #head3 {
+        display: none;
+    }
+
+    h1#head1 {
+        font-size: 1.2em;
+    }
+
+    div.jumbortom {
+        padding: 0 !important;
+    }
+
+    h1 {
+        font-size: 1.6em !important;
+    }
+
+    h2 {
+        font-size: 1.4em !important;
+    }
+
+    h3 {
+        font-size: 1.2em !important;
+    }
+
+    h4 {
+        font-size: 1em !important;
+    }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    #head2, #head3 {
+        display: none;
+    }
+
+    h1#head1 {
+        font-size: 1.8em;
+    }
+
+    div.jumbortom {
+        padding: 0 !important;
+    }
+
+
+    h1 {
+        font-size: 1.6em !important;
+    }
+
+    h2 {
+        font-size: 1.4em !important;
+    }
+
+    h3 {
+        font-size: 1.2em !important;
+    }
+
+    h4 {
+        font-size: 1em !important;
+    }
+
+}

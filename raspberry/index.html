@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+        src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autoload=true&amp;skin=sunburst&amp;lang=css"
+        defer></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/my.css">
+    <link rel="stylesheet" href="./css/w3-theme-grey.css">
+
+
+    <title>RPi-Fényjákékok/Home</title>
+
+    <link rel='icon' href='favicon.png' type='image/x-icon' />
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Head -->
+    <div class="container p-0">
+        <div class="jumbotron jumbotron-fluid p-3 m-0">
+            <div class="row">
+                <div class="col-8">
+                    <h1 id="head1" class="display-4">Raspberry Pi fényjátékok</h1>
+                    <p id="head2" class="lead">Út a villany felkapcsolásától a jelzőlámpa algoritmus kódolásáig.
+                        <br>
+                        "Kódból vagyunk ..."
+                    </p>
+                </div>
+                <div class="col-4">
+                    <img src="./images/logoFenyjatek.jpg" id="head3" class="img-fluid my-img" alt="Logókép">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Head -->
+
+    <div class="container p-0 sticky-top">
+        <!-- Menu -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="orak.html">Órák</span></a>
+                    <a class="nav-item nav-link" href="algoritmus.html">Algoritmus</a>
+                    <a class="nav-item nav-link" href="help.html">Help</a>
+                </div>
+            </div>
+            <div>
+                <a href="#RyPi" class="btn btn-outline-success" role="button" aria-pressed="true">Raspberry</a>
+                <a href="#Led" class="btn btn-outline-success" role="button" aria-pressed="true">LED</a>
+                <a href="#Ak" class="btn btn-outline-success" role="button" aria-pressed="true">Á.K.</a>
+                <a href="#Panel" class="btn btn-outline-success" role="button" aria-pressed="true">Panel</a>
+            </div>
+        </nav>
+    </div>
+    <!--/Menu -->
+    <div class="container p-0">
+
+        <!-- Content -->
+        <h1 class="m-0 p-0 mb-3">Áramköri rajzok</h1>
+
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-4 w3-theme-l5 p-2">
+                <h2 id="RyPi" class="anchor">A Raspberry Pi bekötése</h2>
+            </div>
+            <div class="col-12 col-lg-8 p-lg-3 p-2 pt-3 my-border">
+                <img src="./images/Raspberry-Pins.jpg" class="img-fluid my-img" alt="Responsive image">
+            </div>
+        </div>
+
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-4 w3-theme-l5 p-2">
+                <h2 id="Led" class="anchor">A LED használata</h2>
+            </div>
+            <div class="col-12 col-lg-8 p-lg-3 p-2 pt-3 my-border">
+                <img src="./images/Led.PNG" class="img-fluid my-img" alt="Responsive image">
+            </div>
+        </div>
+
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-4 w3-theme-l5 p-2">
+                <h2 id="Ak" class="anchor">Az áramkör</h2>
+            </div>
+            <div class="col-12 col-lg-8 p-lg-3 p-2 pt-3 my-border">
+                <img src="./images/Raspberry-Pi-GPIO-180.png" class="img-fluid my-img" alt="Responsive image">
+                <br>
+                <img src="./images/LampsCircuit.png" class="img-fluid my-img" alt="Responsive image">
+            </div>
+        </div>
+
+        <div class="row m-0 my-4">
+            <div class="col-12 col-lg-4 w3-theme-l5 p-2">
+                <h2 id="Panel" class="anchor">A Próbapanel (minta bekötés)</h2>
+            </div>
+            <div class="col-12 col-lg-8 p-lg-3 p-2 pt-3 my-border">
+                <img src="./images/Panel-Led-R.jpg" class="img-fluid my-img" alt="Responsive image">
+            </div>
+        </div>
+
+
+
+        <!--/Content -->
+    </div>
+
+
+    <!-- Footer -->
+    <div class="container my-lg-3 my-2 p-0 py-2 w3-theme-d3">
+        <p class="p-0 m-0 px-3">
+            <img src="./images/Raspberry.png" alt="Raspberry">
+            Raspberry fényjátékok
+        </p>
+    </div>
+    <!--/Footer -->
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
